@@ -2,18 +2,44 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <title>小冷的小屋</title>
-  <meta name="description" content="教程">
-  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-  <meta name="author" content="小屋">
+  <title>520</title>
   <style>
-    body { font-family: Arial; background: #f5f5f5; padding: 40px; }
-    p    { font-size: 20px; color: #333; }
+    body{margin:0;height:100vh;background:#eee}
+    .flex{display:flex;flex-direction:column;height:100vh}
+
+    /* 头部栏：图+居中文字 */
+    .header{
+      height:170px;
+      background:url("head1.jpg") center/cover no-repeat;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .love{font-size:8vw;font-weight:700;color:#fff;text-shadow:0 0 4px #b31a5a,0 0 8px #b31a5a;}
+
+    /* 内容栏：flex 居中视频 */
+    .content{
+      flex:1;
+      background:url("aixin.jpeg") center/cover no-repeat;
+      display:flex;           /* 关键 */
+      align-items:center;     /* 垂直居中 */
+      justify-content:center; /* 水平居中 */
+    }
+    video{
+      width:20%;              /* 按需调 */
+      max-width:800px;
+      margin-top:-20%;  
+      border: radius 12px;
+      box-shadow:0 8px 24px rgba(187, 66, 66, 0.3);
+    }
   </style>
 </head>
-<body>
-  <p>小冷的网站</p>
-  <img src="cai.jpg" alt="蔡雅新" width="300" height="500" loading="lazy">
+<body class="flex">
+  <div class="header"><div class="love">小蔡爱小冷</div></div>
+
+  <div class="content">
+    <video controls autoplay muted loop>
+      <source src="jianjie.mp4" type="video/mp4">
+    </video>
+  </div>
 </body>
 </html>
 
