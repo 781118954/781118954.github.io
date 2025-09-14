@@ -22,6 +22,8 @@
       display:flex;           /* 关键 */
       align-items:center;     /* 垂直居中 */
       justify-content:center; /* 水平居中 */
+      position: relative;
+      overflow: hidden;
     }
     video{
       width:20%;              /* 按需调 */
@@ -30,6 +32,21 @@
       border: radius 12px;
       box-shadow:0 8px 24px rgba(187, 66, 66, 0.3);
     }
+
+    /* 星星 */
+    .star {
+      position: absolute;
+      top: -50px;
+      color: #ffcc00;
+      font-size: 30px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(calc(100vh + 50px));
+      }
+    }
   </style>
 </head>
 <body class="flex">
@@ -37,17 +54,28 @@
 
   <div class="content">
     <video controls autoplay muted loop>
-      <source src="jianji11.mp4" type="video/mp4">
+      <source src="jianjie.mp4" type="video/mp4">
     </video>
   </div>
+
+  <script>
+    // 生成星星
+    function createStar() {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.innerHTML = '★';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.querySelector('.content').appendChild(star);
+
+      // 动画结束后移除星星
+      star.addEventListener('animationend', () => {
+        star.remove();
+      });
+    }
+
+    // 每隔一段时间生成一颗星星
+    setInterval(createStar, 500);
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
